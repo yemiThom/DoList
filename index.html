@@ -11,28 +11,69 @@
         <div id="main_wrapper">
             <div class="content_container">
                 <div class="centre_content">
-                    <h1 class="m-t-13">DoList</h1>
+                    <h1>DoList</h1>
                     <p>Welcome to your simplified to-do list.</p>
                     <div class="centre_content">
-                        <div id="todo-list" class="todo-list">
+                        <div id="todo-list">
                             <ul id="list">
-                                <!--<li>This is a list item <input type="checkbox"></li>
-                                <li>This is a list item <input type="checkbox"></li>
-                                <li>This is a list item <input type="checkbox"></li>
-                                <li>This is a list item <input type="checkbox"></li>
-                                <li>This is a particularly long list item for no other reason but to test the centered div limitations and how it could possbily come against something this long in future testings. Ultimately, here's hoping it doesn't come to that<input type="checkbox"></li>
+                                <!--<li>This is a list item 
+                                <select id="urgency">
+                                        <option value="doNow">Do Now</option>
+                                        <option value="doNow">Do Soon</option>
+                                        <option value="doNow">Do Whenever</option>
+                                    </select>
+                                    <input type="checkbox">
+                                </li>
+                                <li>This is a list item 
+                                    <select id="urgency">
+                                        <option value="doNow">Do Now</option>
+                                        <option value="doNow">Do Soon</option>
+                                        <option value="doNow">Do Whenever</option>
+                                    </select>
+                                    <input type="checkbox">
+                                </li>
+                                <li>This is a list item 
+                                    <select id="urgency">
+                                        <option value="doNow">Do Now</option>
+                                        <option value="doNow">Do Soon</option>
+                                        <option value="doNow">Do Whenever</option>
+                                    </select>
+                                    <input type="checkbox">
+                                </li>
+                                <li>This is a list item
+                                    <select id="urgency">
+                                        <option value="doNow">Do Now</option>
+                                        <option value="doNow">Do Soon</option>
+                                        <option value="doNow">Do Whenever</option>
+                                    </select>
+                                    <input type="checkbox">
+                                </li>
+                                <li>This is a particularly long list item for no other reason but to test the centered div limitations and how it could possbily come against something this long in future testings. Ultimately, here's hoping it doesn't come to that
+                                    <select id="urgency">
+                                        <option value="doNow">Do Now</option>
+                                        <option value="doNow">Do Soon</option>
+                                        <option value="doNow">Do Whenever</option>
+                                    </select>
+                                    <input type="checkbox">
+                                </li>
                                 -->
                             </ul>
                         </div>
                     </div>
                     <form id="form">
                         <input id="inputNewDo" type="text" placeholder="Do something new">
+                        <select id="urgency">
+                            <option value="doNow">Do Now</option>
+                            <option value="doNow">Do Soon</option>
+                            <option value="doNow">Do Whenever</option>
+                        </select>
                         <button id="addNewDo" type="button">Add it</button>
                     </form>
                 </div>
             </div>
         </div>
         <!--Javascript-->
+        <script type="text/javascript" src="js/timeOfDay.js"></script>
         <script type="text/javascript">
             window.onload = function(){
                 //document variables
@@ -49,12 +90,17 @@
                 function addNewToDo(){
                     console.log("Submit detected.");
 
-                    var todoTxt = listInput.value;
-                    var newItem = "<li id='li-"+listID+"'>"+todoTxt+"<input id='chk-"+listID+"' type='checkbox'></li>";
+                    if(listInput.value == ""){
+                        //Do Nothing
+                        console.log("Blank input submitted. Do nothing.")
+                    }else{
+                        var todoTxt = listInput.value;
+                        var newItem = "<li id='li-"+listID+"'>"+todoTxt+"<input id='chk-"+listID+"' type='checkbox'></li>";
 
-                    list.insertAdjacentHTML('beforeend', newItem);
-                    listID++;
-                    form.reset();
+                        list.insertAdjacentHTML('beforeend', newItem);
+                        listID++;
+                        form.reset();
+                    }
                 }
             }
         </script>
