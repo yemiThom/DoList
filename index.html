@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>DoList - Your simplified list</title>
+		<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <!--Stylesheet-->
+		<link rel="stylesheet" href="css/main.css" />
+    </head>
+    <body>
+        <div id="main_wrapper">
+            <div class="content_container">
+                <div class="centre_content">
+                    <h1 class="m-t-13">DoList</h1>
+                    <p>Welcome to your simplified to-do list.</p>
+                    <div class="centre_content">
+                        <div id="todo-list" class="todo-list">
+                            <ul id="list">
+                                <!--<li>This is a list item <input type="checkbox"></li>
+                                <li>This is a list item <input type="checkbox"></li>
+                                <li>This is a list item <input type="checkbox"></li>
+                                <li>This is a list item <input type="checkbox"></li>
+                                <li>This is a particularly long list item for no other reason but to test the centered div limitations and how it could possbily come against something this long in future testings. Ultimately, here's hoping it doesn't come to that<input type="checkbox"></li>
+                                -->
+                            </ul>
+                        </div>
+                    </div>
+                    <form id="form">
+                        <input id="inputNewDo" type="text" placeholder="Do something new">
+                        <button id="addNewDo" type="button">Add it</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Javascript-->
+        <script type="text/javascript">
+            window.onload = function(){
+                //document variables
+                var form = document.getElementById("form");
+                var listInput = document.getElementById("inputNewDo");
+                var listSubmit = document.getElementById("addNewDo");
+                var list = document.getElementById("list");
+                var listID = 1;
+
+                //button click event listener to call function
+                listSubmit.addEventListener("click", addNewToDo);
+
+                //call function on submit
+                function addNewToDo(){
+                    console.log("Submit detected.");
+
+                    var todoTxt = listInput.value;
+                    var newItem = "<li id='li-"+listID+"'>"+todoTxt+"<input id='chk-"+listID+"' type='checkbox'></li>";
+
+                    list.insertAdjacentHTML('beforeend', newItem);
+                    listID++;
+                    form.reset();
+                }
+            }
+        </script>
+    </body>
+</html>

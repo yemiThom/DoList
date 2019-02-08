@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+html, body {height: 100%; }
+
+body, input, textarea { font-family: 'Lato', Verdana, 'Gill Sans', 'Gill Sans MT', 'Calibri', Tahoma, sans-serif }
+input, textarea { font-size: 1rem; }
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.17em; }
+h5 { font-size: .83em; }
+h6 { font-size: .75em; }
+
+p { font-size:1em; line-height:1.2; margin: 5px auto; }
+
+a, a:visited, a:hover, a:active { color: inherit; cursor: none !important; }
+
+ul, ol { list-style-type: none; }
+li { padding: 1rem;}
+
+.m-t-13 {margin-top: 13rem;}
+
+.main_wrapper {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content_container{
+    width: auto;
+}
+
+.centre_content{
+    padding: 5px;
+    /*line-height: 20px;*/
+    text-align: center;
+}
+
+.todo-list{
+    max-width: 50%;
+    margin-left: 25%;
+}
