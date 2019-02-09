@@ -25,6 +25,14 @@ a, a:visited, a:hover, a:active { color: inherit; cursor: none !important; }
 ul, ol { list-style-type: none; }
 li { padding: 1rem; }
 
+input,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus { outline: none; }
+
+input[type="checkbox"] { display: none; }
+
 .m-t-13 { margin-top: 13rem; }
 
 .color-midnite-blu{ color:#2c3e50; }

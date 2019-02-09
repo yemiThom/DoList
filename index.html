@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <!--Stylesheet-->
 		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/list_style.css" />
     </head>
     <body>
         <div id="main_wrapper">
@@ -16,45 +17,35 @@
                     <div class="centre_content">
                         <div id="todo-list">
                             <ul id="list">
-                                <!--<li>This is a list item 
-                                <select id="urgency">
-                                        <option value="doNow">Do Now</option>
-                                        <option value="doNow">Do Soon</option>
-                                        <option value="doNow">Do Whenever</option>
-                                    </select>
-                                    <input type="checkbox">
+                                <!----><li>This is a list item 
+                                    <input type="checkbox" id="checkbox1" name="checkbox1" value="" />
+                                    <label for="checkbox1">
+                                        <span><!-- Span to be used to create checkbox styling --></span>
+                                    </label>
                                 </li>
                                 <li>This is a list item 
-                                    <select id="urgency">
-                                        <option value="doNow">Do Now</option>
-                                        <option value="doNow">Do Soon</option>
-                                        <option value="doNow">Do Whenever</option>
-                                    </select>
-                                    <input type="checkbox">
+                                    <input type="checkbox" id="checkbox2" name="checkbox2" value="" />
+                                    <label for="checkbox2">
+                                        <span><!-- Span to be used to create checkbox styling --></span>
+                                    </label>
                                 </li>
                                 <li>This is a list item 
-                                    <select id="urgency">
-                                        <option value="doNow">Do Now</option>
-                                        <option value="doNow">Do Soon</option>
-                                        <option value="doNow">Do Whenever</option>
-                                    </select>
-                                    <input type="checkbox">
+                                    <input type="checkbox" id="checkbox3" name="checkbox3" value="" />
+                                    <label for="checkbox3">
+                                        <span><!-- Span to be used to create checkbox styling --></span>
+                                    </label>
                                 </li>
-                                <li>This is a list item
-                                    <select id="urgency">
-                                        <option value="doNow">Do Now</option>
-                                        <option value="doNow">Do Soon</option>
-                                        <option value="doNow">Do Whenever</option>
-                                    </select>
-                                    <input type="checkbox">
+                                <li>This is a list item 
+                                    <input type="checkbox" id="checkbox4" name="checkbox4" value="" />
+                                    <label for="checkbox4">
+                                        <span><!-- Span to be used to create checkbox styling --></span>
+                                    </label>
                                 </li>
-                                <li>This is a particularly long list item for no other reason but to test the centered div limitations and how it could possbily come against something this long in future testings. Ultimately, here's hoping it doesn't come to that
-                                    <select id="urgency">
-                                        <option value="doNow">Do Now</option>
-                                        <option value="doNow">Do Soon</option>
-                                        <option value="doNow">Do Whenever</option>
-                                    </select>
-                                    <input type="checkbox">
+                                <!--<li>This is a particularly long list item for no other reason but to test the centered div limitations and how it could possbily come against something this long in future testings. Ultimately, here's hoping it doesn't come to that
+                                    <input type="checkbox" id="checkbox5" name="checkbox5" value="" />
+                                    <label for="checkbox5">
+                                        <span><-- Span to be used to create checkbox styling -></span>
+                                    </label>
                                 </li>
                                 -->
                             </ul>
@@ -86,6 +77,9 @@
                 //button click event listener to call function
                 listSubmit.addEventListener("click", addNewToDo);
 
+                //list event listener
+                list.addEventListener("click", boxChecked);
+
                 //call function on submit
                 function addNewToDo(){
                     console.log("Submit detected.");
@@ -100,6 +94,15 @@
                         list.insertAdjacentHTML('beforeend', newItem);
                         listID++;
                         form.reset();
+                    }
+                }
+
+                //call function when the checkbox on a list item is ticked
+                function boxChecked(event){
+                    const element =  event.target;
+                    if(element.type == "checkbox"){
+                        element.parentNode.style.textDecoration = "line-through #2ecc71";
+                        element.parentNode.classList.add("color-concrete");
                     }
                 }
             }
