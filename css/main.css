@@ -5,6 +5,17 @@
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    -webkit-touch-callout: none;
+    -moz-touch-callout: none;
+    -ms-touch-callout: none;
 }
 
 html, body { height: 100%; }
@@ -96,6 +107,12 @@ input[type="checkbox"] { display: none; }
 
 #inputNewDo{
     border-right: 1px solid #ecf0f1;
+    height: 2.5rem;
+}
+
+#todo-list{
+    max-height: 21rem;
+    overflow-y: scroll;
 }
 
 .addBtn{

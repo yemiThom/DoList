@@ -69,44 +69,14 @@
                 </div>
                 <form id="form">
                     <input id="inputNewDo" type="text" placeholder="Do something new">
-
-                    <div class="select_wrapper">
-                        <ul class="select">
-                            <li>
-                                <input class="select_close" type="radio" name="urgency" id="urgency-close" value="" />
-                                <span class="select_label select_label-placeholder">Urgency</span>
-                            </li>
-
-                            <li class="select_items">
-                                <input class="select_expand" type="radio" name="urgency" id="urgency-opener" />
-                                <label class="select_closeLabel" for="urgency-close"></label>
-
-                                <ul class="select_options">
-                                    <li class="select_option">
-                                        <input class="select_input" type="radio" name="urgency" id="urgency-do-now" />
-                                        <label class="select_label" for="urgency-do-now">Do Now</label>
-                                    </li>
-
-                                    <li class="select_option">
-                                        <input class="select_input" type="radio" name="urgency" id="urgency-do-soon" />
-                                        <label class="select_label" for="urgency-do-soon">Do Soon</label>
-                                    </li>
-
-                                    <li class="select_option">
-                                        <input class="select_input" type="radio" name="urgency" id="urgency-do-whenever" />
-                                        <label class="select_label" for="urgency-do-whenever">Do Whenever</label>
-                                    </li>
-                                </ul>
-
-                                <label class="select_expandLabel" for="urgency-opener"></label>
-                            </li>
-                        </ul>
+                    <div class="select">
+                        <select name="slct" id="slct">
+                            <option value="do-now">Do Now</option>
+                            <option value="do-soon">Do Soon</option>
+                            <option value="do-whenever">Do Whenever</option>
+                        </select>
                     </div>
-                    <!--<select id="urgency">
-                            <option value="doNow">Do Now</option>
-                            <option value="doNow">Do Soon</option>
-                            <option value="doNow">Do Whenever</option>
-                        </select>-->
+
                     <button id="addNewDo" type="button" class="addBtn">Add it</button>
                 </form>
             </div>
@@ -123,9 +93,7 @@
             var listSubmit = document.getElementById("addNewDo");
             var list = document.getElementById("list");
             var listID = 1;
-            var urgencyNow = document.getElementById("urgency-do-now");
-            var urgencySoon = document.getElementById("urgency-do-soon");
-            var urgencyWhenever = document.getElementById("urgency-do-whenever");
+            var selector = document.getElementById("slct");
             
             //add the class loaded to the body element
             body.classList.add("loaded");
@@ -140,12 +108,15 @@
             function addNewToDo() {
                 console.log("Submit detected.");
 
-                if (listInput.value == "" || urgencyNow.checked == false || urgencySoon == false || urgencyWhenever == false) {
+                if (listInput.value == "") {
                     //Do Nothing
                     console.log("Blank input submitted or urgency not selected. Do nothing.")
                 } else {
                     var todoTxt = listInput.value;
-                    var newItem = "<li id='li-" + listID + "'>" + todoTxt + "<input type='checkbox' id='checkbox" + listID + "' name='checkbox" + listID + "' value=''><label for='checkbox" + listID + "'><span><!-- Span to be used to create checkbox styling --></span></label></li>";
+                    var value = selector[selector.selectedIndex].value;
+                    console.log("value: " + value);
+
+                    var newItem = "<li id='li-" + listID + "'>" + todoTxt + "<input type='checkbox' id='checkbox" + listID + "' name='checkbox" + listID + "' value=''><label class='" + value + "' for='checkbox" + listID + "'><span><!-- Span to be used to create checkbox styling --></span></label></li>";
 
                     list.insertAdjacentHTML('beforeend', newItem);
                     listID++;
@@ -157,8 +128,15 @@
             function boxChecked(event) {
                 const element = event.target;
                 if (element.type == "checkbox") {
-                    element.parentNode.style.textDecoration = "line-through #2ecc71";
-                    element.parentNode.classList.add("color-concrete");
+                    if(element.checked == true){
+                        console.log("This has been checked off the list");
+                        element.parentNode.classList.add("color-concrete");
+                        element.parentNode.classList.add("completed");
+                    }else{
+                        console.log("This has been un-checked off the list");
+                        element.parentNode.classList.remove("color-concrete");
+                        element.parentNode.classList.remove("completed");
+                    }
                 }
             }
         }
