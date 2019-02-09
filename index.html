@@ -1,111 +1,168 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>DoList - Your simplified list</title>
-		<meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <!--Stylesheet-->
-		<link rel="stylesheet" href="css/main.css" />
-		<link rel="stylesheet" href="css/list_style.css" />
-    </head>
-    <body>
-        <div id="main_wrapper">
-            <div class="content_container">
+
+<head>
+    <title>DoList - Your simplified list</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/list_style.css" />
+    <link rel="stylesheet" href="css/select_style.css" />
+    <link rel="stylesheet" href="css/preloader.css" />
+</head>
+
+<body>
+    <!-- Preloader Animation Div -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!-- Preloader Animation Div -->
+    <div id="main_wrapper">
+        <div class="content_container">
+            <div class="centre_content">
+                <h1 class="color-midnite-blu">DoList</h1>
+                <p class="color-wet-asphalt">Welcome to your simplified to-do list.</p>
                 <div class="centre_content">
-                    <h1 class="color-midnite-blu">DoList</h1>
-                    <p class="color-wet-asphalt">Welcome to your simplified to-do list.</p>
-                    <div class="centre_content">
-                        <div id="todo-list">
-                            <ul id="list">
-                                <!----><li>This is a list item 
-                                    <input type="checkbox" id="checkbox1" name="checkbox1" value="" />
-                                    <label for="checkbox1">
-                                        <span><!-- Span to be used to create checkbox styling --></span>
-                                    </label>
-                                </li>
-                                <li>This is a list item 
-                                    <input type="checkbox" id="checkbox2" name="checkbox2" value="" />
-                                    <label for="checkbox2">
-                                        <span><!-- Span to be used to create checkbox styling --></span>
-                                    </label>
-                                </li>
-                                <li>This is a list item 
-                                    <input type="checkbox" id="checkbox3" name="checkbox3" value="" />
-                                    <label for="checkbox3">
-                                        <span><!-- Span to be used to create checkbox styling --></span>
-                                    </label>
-                                </li>
-                                <li>This is a list item 
-                                    <input type="checkbox" id="checkbox4" name="checkbox4" value="" />
-                                    <label for="checkbox4">
-                                        <span><!-- Span to be used to create checkbox styling --></span>
-                                    </label>
-                                </li>
-                                <!--<li>This is a particularly long list item for no other reason but to test the centered div limitations and how it could possbily come against something this long in future testings. Ultimately, here's hoping it doesn't come to that
+                    <div id="todo-list">
+                        <ul id="list">
+                            <!--
+                            <li>This is a list item
+                                <input type="checkbox" id="checkbox1" name="checkbox1" value="" />
+                                <label for="checkbox1">
+                                    <span>
+                                        <-- Span to be used to create checkbox styling -></span>
+                                </label>
+                            </li>
+                            <li>This is a list item
+                                <input type="checkbox" id="checkbox2" name="checkbox2" value="" />
+                                <label for="checkbox2">
+                                    <span>
+                                        <-- Span to be used to create checkbox styling -></span>
+                                </label>
+                            </li>
+                            <li>This is a list item
+                                <input type="checkbox" id="checkbox3" name="checkbox3" value="" />
+                                <label for="checkbox3">
+                                    <span>
+                                        <-- Span to be used to create checkbox styling -></span>
+                                </label>
+                            </li>
+                            <li>This is a list item
+                                <input type="checkbox" id="checkbox4" name="checkbox4" value="" />
+                                <label for="checkbox4">
+                                    <span>
+                                        <-- Span to be used to create checkbox styling -></span>
+                                </label>
+                            </li>
+                            <li>This is a particularly long list item for no other reason but to test the centered div limitations and how it could possbily come against something this long in future testings. Ultimately, here's hoping it doesn't come to that
                                     <input type="checkbox" id="checkbox5" name="checkbox5" value="" />
                                     <label for="checkbox5">
                                         <span><-- Span to be used to create checkbox styling -></span>
                                     </label>
                                 </li>
                                 -->
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
-                    <form id="form">
-                        <input id="inputNewDo" type="text" placeholder="Do something new">
-                        <select id="urgency">
+                </div>
+                <form id="form">
+                    <input id="inputNewDo" type="text" placeholder="Do something new">
+
+                    <div class="select_wrapper">
+                        <ul class="select">
+                            <li>
+                                <input class="select_close" type="radio" name="urgency" id="urgency-close" value="" />
+                                <span class="select_label select_label-placeholder">Urgency</span>
+                            </li>
+
+                            <li class="select_items">
+                                <input class="select_expand" type="radio" name="urgency" id="urgency-opener" />
+                                <label class="select_closeLabel" for="urgency-close"></label>
+
+                                <ul class="select_options">
+                                    <li class="select_option">
+                                        <input class="select_input" type="radio" name="urgency" id="urgency-do-now" />
+                                        <label class="select_label" for="urgency-do-now">Do Now</label>
+                                    </li>
+
+                                    <li class="select_option">
+                                        <input class="select_input" type="radio" name="urgency" id="urgency-do-soon" />
+                                        <label class="select_label" for="urgency-do-soon">Do Soon</label>
+                                    </li>
+
+                                    <li class="select_option">
+                                        <input class="select_input" type="radio" name="urgency" id="urgency-do-whenever" />
+                                        <label class="select_label" for="urgency-do-whenever">Do Whenever</label>
+                                    </li>
+                                </ul>
+
+                                <label class="select_expandLabel" for="urgency-opener"></label>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--<select id="urgency">
                             <option value="doNow">Do Now</option>
                             <option value="doNow">Do Soon</option>
                             <option value="doNow">Do Whenever</option>
-                        </select>
-                        <button id="addNewDo" type="button">Add it</button>
-                    </form>
-                </div>
+                        </select>-->
+                    <button id="addNewDo" type="button" class="addBtn">Add it</button>
+                </form>
             </div>
         </div>
-        <!--Javascript-->
-        <script type="text/javascript" src="js/timeOfDay.js"></script>
-        <script type="text/javascript">
-            window.onload = function(){
-                //document variables
-                var form = document.getElementById("form");
-                var listInput = document.getElementById("inputNewDo");
-                var listSubmit = document.getElementById("addNewDo");
-                var list = document.getElementById("list");
-                var listID = 1;
+    </div>
+    <!--Javascript-->
+    <script type="text/javascript" src="js/timeOfDay.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            //document variables
+            var body = document.body;
+            var form = document.getElementById("form");
+            var listInput = document.getElementById("inputNewDo");
+            var listSubmit = document.getElementById("addNewDo");
+            var list = document.getElementById("list");
+            var listID = 1;
+            var urgencyNow = document.getElementById("urgency-do-now");
+            var urgencySoon = document.getElementById("urgency-do-soon");
+            var urgencyWhenever = document.getElementById("urgency-do-whenever");
+            
+            //add the class loaded to the body element
+            body.classList.add("loaded");
 
-                //button click event listener to call function
-                listSubmit.addEventListener("click", addNewToDo);
+            //button click event listener to call function
+            listSubmit.addEventListener("click", addNewToDo);
 
-                //list event listener
-                list.addEventListener("click", boxChecked);
+            //list event listener
+            list.addEventListener("click", boxChecked);
 
-                //call function on submit
-                function addNewToDo(){
-                    console.log("Submit detected.");
+            //call function on submit
+            function addNewToDo() {
+                console.log("Submit detected.");
 
-                    if(listInput.value == ""){
-                        //Do Nothing
-                        console.log("Blank input submitted. Do nothing.")
-                    }else{
-                        var todoTxt = listInput.value;
-                        var newItem = "<li id='li-"+listID+"'>"+todoTxt+"<input id='chk-"+listID+"' type='checkbox'></li>";
+                if (listInput.value == "" || urgencyNow.checked == false || urgencySoon == false || urgencyWhenever == false) {
+                    //Do Nothing
+                    console.log("Blank input submitted or urgency not selected. Do nothing.")
+                } else {
+                    var todoTxt = listInput.value;
+                    var newItem = "<li id='li-" + listID + "'>" + todoTxt + "<input type='checkbox' id='checkbox" + listID + "' name='checkbox" + listID + "' value=''><label for='checkbox" + listID + "'><span><!-- Span to be used to create checkbox styling --></span></label></li>";
 
-                        list.insertAdjacentHTML('beforeend', newItem);
-                        listID++;
-                        form.reset();
-                    }
-                }
-
-                //call function when the checkbox on a list item is ticked
-                function boxChecked(event){
-                    const element =  event.target;
-                    if(element.type == "checkbox"){
-                        element.parentNode.style.textDecoration = "line-through #2ecc71";
-                        element.parentNode.classList.add("color-concrete");
-                    }
+                    list.insertAdjacentHTML('beforeend', newItem);
+                    listID++;
+                    form.reset();
                 }
             }
-        </script>
-    </body>
+
+            //call function when the checkbox on a list item is ticked
+            function boxChecked(event) {
+                const element = event.target;
+                if (element.type == "checkbox") {
+                    element.parentNode.style.textDecoration = "line-through #2ecc71";
+                    element.parentNode.classList.add("color-concrete");
+                }
+            }
+        }
+    </script>
+</body>
+
 </html>

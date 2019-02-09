@@ -15,6 +15,7 @@ label span{
     border-radius: 50%;
     vertical-align: -6px;
     margin-right: 10px;
+    cursor: pointer;
     transition: background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89); /** creates the ease effect for bouncy animation **/
 }
 
