@@ -31,7 +31,7 @@ h6 { font-size: .75rem; }
 
 p { font-size:1em; line-height:1.2; margin: 5px auto; }
 
-a, a:visited, a:hover, a:active { color: inherit; cursor: none !important; }
+a, a:visited, a:hover, a:active { color: inherit; cursor: none; }
 
 ul, ol { list-style-type: none; }
 li { padding: 1rem; }
@@ -45,6 +45,9 @@ button:focus { outline: none; }
 input[type="checkbox"] { display: none; }
 
 .m-t-13 { margin-top: 13rem; }
+
+.pos-relative { position: relative; }
+.pos-absolute { position: absolute; }
 
 .color-midnite-blu{ color:#2c3e50; }
 .color-wet-asphalt{ color:#34495e; }
