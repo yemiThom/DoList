@@ -71,7 +71,9 @@ function displayDoList(){
     var tempItemsArray = JSON.parse(localStorage.getItem("taskItemsArray"));
     console.log("tempItemsArray: " + JSON.stringify(tempItemsArray));
     //console.log("sorted tempItemsArray: " + JSON.stringify(sortByKey(tempItemsArray, "urgency")));
-    tempItemsArray = sortByKey(tempItemsArray, "urgency");
+    if(tempItemsArray != null){
+        tempItemsArray = sortByKey(tempItemsArray, "urgency");
+    }
 
     while(list.firstChild){
         list.removeChild(list.firstChild);
@@ -81,9 +83,21 @@ function displayDoList(){
         //go through items array with for loop
         for(i = 0; i < tempItemsArray.length; i++){
             //make a newItem variable to hold html markup for each task item
-            var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative'>" + tempItemsArray[i].task + "<input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='close' id='close'></li>";
+            //check if newItem has true or false completed value
+            if(tempItemsArray[i].completed == "false"){
+                var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative'>" + tempItemsArray[i].task + "<input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='close' id='close'></li>";
+            }else if(tempItemsArray[i].completed == "true"){
+                var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative color-concrete completed'>" + tempItemsArray[i].task + "<input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='close' id='close'></li>";
+                
+            }
+
             //insert newItem to list element
             list.insertAdjacentHTML('beforeend', newItem);
+            //if the checkbox to the item id exists and set it's checked value
+            var elem = "checkbox"+tempItemsArray[i].id;
+            if(elem != null && tempItemsArray[i].completed == "true"){
+                document.getElementById(elem).checked = tempItemsArray[i].completed;
+            }
             //reset the form element
             form.reset();
         }
@@ -102,6 +116,30 @@ function sortByKey(array, key){
     });
 }
 
+//function to edit an object value in the array
+function editByKey(key, val, changeTo){
+    console.log("key to edit by: " + key);
+    console.log("value to edit: " + val);
+    //make deleteFromItemsArray
+    var editFromItemsArray = JSON.parse(localStorage.getItem("taskItemsArray"));
+
+    for(i = 0; i < editFromItemsArray.length; i++){
+        if(editFromItemsArray[i].id == key){
+            if(val == "task"){
+
+            } else if(val == "urgency"){
+
+            } else if(val == "completed"){
+                editFromItemsArray[i].completed = changeTo;
+                break;
+            }
+        }
+    }
+    console.log("editFromItemsArray after edit: " + JSON.stringify(editFromItemsArray));
+    //save taskItemsArray to localstorage
+    localStorage.setItem("taskItemsArray", JSON.stringify(editFromItemsArray));
+}
+
 //function call to delete an item from dolist
 function deleteByValue(value){
     console.log("value to delete by: " + value);
@@ -113,6 +151,7 @@ function deleteByValue(value){
         if(deleteFromItemsArray[i].id == value){
             console.log("This is the object to delete here");
             deleteFromItemsArray.splice(i, 1);
+            break;
         }
     }
 

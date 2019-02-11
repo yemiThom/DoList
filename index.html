@@ -89,12 +89,7 @@
         window.onload = function () {
             //document variables
             var body = document.body;
-            //var form = document.getElementById("form");
-            //var listInput = document.getElementById("inputNewDo");
             var listSubmit = document.getElementById("addNewDo");
-            //var list = document.getElementById("list");
-            //var listID = 1;
-            //var selector = document.getElementById("slct");
             
             //add the class loaded to the body element for the preloader
             body.classList.add("loaded");
@@ -108,27 +103,6 @@
             //call displayDoList function
             displayDoList();
 
-            /*call function on submit
-            function addNewToDo() {
-                console.log("Submit detected.");
-
-                if (listInput.value == "") {
-                    //Do Nothing
-                    console.log("Blank input submitted or urgency not selected. Do nothing.")
-                } else {
-                    var todoTxt = listInput.value;
-                    var selValue = selector[selector.selectedIndex].value;
-
-
-
-                    var newItem = "<li id='" + listID + "' class='hoverReveal pos-relative'>" + todoTxt + "<input type='checkbox' id='checkbox" + listID + "' name='checkbox" + listID + "' value=''><label class='" + selValue + "' for='checkbox" + listID + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='close' id='close'></li>";
-
-                    list.insertAdjacentHTML('beforeend', newItem);
-                    listID++;
-                    form.reset();
-                }
-            }*/
-
             //call function when the checkbox on a list item is ticked
             function boxChecked(event) {
                 const element = event.target;
@@ -137,10 +111,12 @@
                         console.log("This has been checked off the list");
                         element.parentNode.classList.add("color-concrete");
                         element.parentNode.classList.add("completed");
+                        editByKey(element.parentNode.id, "completed", "true");
                     }else{
                         console.log("This has been un-checked off the list");
                         element.parentNode.classList.remove("color-concrete");
                         element.parentNode.classList.remove("completed");
+                        editByKey(element.parentNode.id, "completed", "false");
                     }
                 }else if(element.id == "close"){
                     console.log("close button clicked, now to delete item");
