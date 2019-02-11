@@ -114,9 +114,8 @@
                 } else {
                     var todoTxt = listInput.value;
                     var value = selector[selector.selectedIndex].value;
-                    console.log("value: " + value);
 
-                    var newItem = "<li id='li-" + listID + "' class='hoverReveal pos-relative'>" + todoTxt + "<input type='checkbox' id='checkbox" + listID + "' name='checkbox" + listID + "' value=''><label class='" + value + "' for='checkbox" + listID + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='close' id='close'></li>";
+                    var newItem = "<li id='" + listID + "' class='hoverReveal pos-relative'>" + todoTxt + "<input type='checkbox' id='checkbox" + listID + "' name='checkbox" + listID + "' value=''><label class='" + value + "' for='checkbox" + listID + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='close' id='close'></li>";
 
                     list.insertAdjacentHTML('beforeend', newItem);
                     listID++;
@@ -141,11 +140,6 @@
                     console.log("close button clicked, now to delete item");
                     element.parentNode.remove();
                 }
-            }
-
-            //call function when close button is clicked to delete task item
-            function deleteTask(){
-
             }
         }
     </script>

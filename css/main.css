@@ -150,6 +150,9 @@ input[type="checkbox"] { display: none; }
     background-size: 100px 100px, cover, cover;
     background-position: top left, center center, bottom center;
     background-attachment: fixed, fixed, fixed;
+    
+    opacity: 0;
+    transition: opacity 1500ms;
 }
 .afternoon{
     background-color: #ffffff;
@@ -161,6 +164,9 @@ input[type="checkbox"] { display: none; }
     background-size: 100px 100px, cover, cover;
     background-position: top left, center center, bottom center;
     background-attachment: fixed, fixed, fixed;
+    
+    opacity: 0;
+    transition: opacity 1500ms;
 }
 .evening{
     background-color: #ffffff;
@@ -172,6 +178,9 @@ input[type="checkbox"] { display: none; }
     background-size: 100px 100px, cover, cover;
     background-position: top left, center center, bottom center;
     background-attachment: fixed, fixed, fixed;
+    
+    opacity: 0;
+    transition: opacity 1500ms;
 }
 
 @media screen and (max-width: 480px) {

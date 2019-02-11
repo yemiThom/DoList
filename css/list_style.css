@@ -58,7 +58,7 @@ label span::after{
     position: absolute;
     transform: rotate(305deg);
     top: 16px;
-    left: 10px;
+    left: 11px;
     transition: width 50ms ease;
     transform-origin: 0% 0%;
 }
@@ -165,6 +165,7 @@ input[type="checkbox"]:checked + label:hover span:before {
 .close:before, .close:after {
   content: "";
   position: absolute;
+  top: 5px;
   left: 15px;
   height: 15px;
   width: 2px;
