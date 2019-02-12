@@ -120,7 +120,35 @@
                     }
                 }else if(element.id == "edit"){
                     console.log("edit button clicked, now to edit item");
-                    
+                    var label = element.parentNode.querySelector("label");
+                    var editInput = element.parentNode.querySelector("input[type=text]");
+                    var containsClass = element.parentNode.classList.contains("editMode");
+                    //var containsClass2 = element.parentNode.classList.contains("completed");
+                    //var wasCompleted = false;
+
+                    console.log("element.parentNode: " + element.parentNode);
+
+                    if(containsClass){
+                        console.log("Save edit now!");
+                        //change label text to input element value
+                        label.innerText = editInput.value;
+                        editByKey(element.parentNode.id, "task", editInput.value);
+                    }else{
+                        console.log("Yup, it's editing time! Can now change task text.");
+                        //change input element value to label text
+                        editInput.value = label.innerText;
+                    }
+
+                    /*toggle editMode class for the parentNode
+                    if(containsClass2){  
+                        wasCompleted = true;
+                        if(wasCompleted){
+                            element.parentNode.classList.toggle("completed");
+                        }
+                    }*/
+
+                    element.parentNode.classList.toggle("editMode");
+
                 }else if(element.id == "close"){
                     console.log("close button clicked, now to delete item");
                     deleteByValue(element.parentNode.id);

@@ -118,6 +118,23 @@ input[type="checkbox"] { display: none; }
     overflow-y: scroll;
 }
 
+#todo-list input[type=text]{
+    display: none;
+}
+
+#todo-list li.editMode input[type=text]{
+    display: inline-block;
+    border-bottom: 1px dashed #bdc3c7;
+}
+
+#todo-list li.editMode label.taskLabel{
+    display: none;
+}
+
+.taskLabel{
+    margin-left: 0px;
+}
+
 .addBtn{
     color: #444444;
     background: #F3F3F3;

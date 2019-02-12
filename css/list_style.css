@@ -145,6 +145,10 @@ input[type="checkbox"]:checked + label:hover span:before {
   width: 50%;
 }
 
+.editMode .completed:before {
+  opacity: 0.5;
+}
+
 .hoverReveal:hover .edit,
 .hoverReveal:hover .close{
   display: initial;
