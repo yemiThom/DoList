@@ -202,3 +202,44 @@ input[type="checkbox"]:checked + label:hover span:before {
   transform: rotate(-45deg);
 }
 
+@media screen and (max-width: 480px) {
+  label{
+    margin-left: 10px;
+  }
+  label span{
+    width: 16px;
+    height: 16px;
+  }
+  label span:before{
+    top: 8px;
+    left: 5px;
+  }
+  label span:after{
+    top: 12px;
+    left: 6px;
+  }
+  .edit{
+    top: 11px;
+    right: 15px;
+    width: 16px;
+    height: 16px;
+  }
+  .edit:after{
+    top: 2px;
+    left: 3px;
+  }
+  .close{
+    top: 13px;
+    right: -3px;
+    width: 16px;
+    height: 16px;
+  }
+  .close:before, .close:after{
+    height: 10px;
+    top: 3px;
+    right: 6px;
+  }
+  .completed:before{
+    top: 50%;
+  }
+}

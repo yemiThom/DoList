@@ -153,3 +153,14 @@ select::-ms-expand {
     -o-transition: .25s all ease;
     transition: .25s all ease;
 }
+
+@media screen and (max-width: 480px) {
+  .select::after {
+    bottom: 6px;
+  }
+}
+@media screen and (max-width: 800px) {
+  select{
+    padding: 0.25rem 0 0 0.5rem;
+  }
+}
