@@ -133,19 +133,19 @@ input[type="checkbox"]:checked + label:hover span:before {
   position: relative;
 }
 
-.completed:before{
+.completed .taskLabel:before{
   border-top: 2px solid #2ecc71;
   content:"";
   margin: 0 auto; /* this centers the line to the full width specified */
   position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
   top: 55%; 
-  left: -15%; 
+  left: 0; 
   right: 0; 
   bottom: 0;
-  width: 50%;
+  width: 100%;
 }
 
-.editMode .completed:before {
+.editMode .completed .taskLabel::before {
   opacity: 0.5;
 }
 
