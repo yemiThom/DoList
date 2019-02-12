@@ -85,9 +85,9 @@ function displayDoList(){
             //make a newItem variable to hold html markup for each task item
             //check if newItem has true or false completed value
             if(tempItemsArray[i].completed == "false"){
-                var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative'>" + tempItemsArray[i].task + "<input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='close' id='close'></li>";
+                var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative'>" + tempItemsArray[i].task + "<input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='edit' id='edit'><a href='#' class='close' id='close'></li>";
             }else if(tempItemsArray[i].completed == "true"){
-                var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative color-concrete completed'>" + tempItemsArray[i].task + "<input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='close' id='close'></li>";
+                var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative color-concrete completed'>" + tempItemsArray[i].task + "<input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='edit' id='edit'><a href='#' class='close' id='close'></li>";
                 
             }
 
@@ -126,9 +126,9 @@ function editByKey(key, val, changeTo){
     for(i = 0; i < editFromItemsArray.length; i++){
         if(editFromItemsArray[i].id == key){
             if(val == "task"){
-
+                editFromItemsArray[i].task = changeTo;
             } else if(val == "urgency"){
-
+                editFromItemsArray[i].urgency = changeTo;
             } else if(val == "completed"){
                 editFromItemsArray[i].completed = changeTo;
                 break;

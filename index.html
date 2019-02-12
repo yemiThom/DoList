@@ -118,6 +118,9 @@
                         element.parentNode.classList.remove("completed");
                         editByKey(element.parentNode.id, "completed", "false");
                     }
+                }else if(element.id == "edit"){
+                    console.log("edit button clicked, now to edit item");
+                    
                 }else if(element.id == "close"){
                     console.log("close button clicked, now to delete item");
                     deleteByValue(element.parentNode.id);
