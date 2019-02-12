@@ -139,8 +139,14 @@ select::-ms-expand {
     pointer-events: none;
 }
 /* Transition */
-.select:hover::after {
+.do-now:hover::after {
+  color: #e74c3c;
+}
+.do-soon:hover::after {
     color: #f1c40f;
+}
+.do-whenever:hover::after {
+  color: #3498db;
 }
 .select::after {
     -webkit-transition: .25s all ease;

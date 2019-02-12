@@ -1,0 +1,66 @@
+.slideout-sidebar {
+    position: fixed;
+    top: 0;
+    right: -190px;
+    z-index: 1;
+    width: 150px;
+    height: 100%;
+    padding: 20px;
+    background-color: #212121;
+    transition: all 300ms ease-in-out;
+  }
+  
+.slideout-sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slideout-sidebar ul li {
+    cursor: pointer;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(244,244,244,0.4);
+    color: rgba(244,244,244,0.7);
+}
+.slideout-sidebar ul li.do-now:hover{
+    color: rgba(232,76,60,0.7);
+}
+.slideout-sidebar ul li.do-soon:hover{
+    color: rgba(241,196,15,0.7);
+}
+
+.slideout-sidebar ul li.do-whenever:hover{
+    color: rgba(52,152,219,0.7);
+}
+.slideout-sidebar ul li.do-all:hover {
+    color: rgba(244,244,244,1);
+}
+
+
+.slideout-sidebar ul li:last-child {
+    border-bottom: 0;
+}
+
+#menu-toggle {
+    display: none;
+}
+.menu-icon {
+    position: absolute;
+    top: 18px;
+    right: 30px;
+    font-size: 24px;
+    z-index: 1;
+    transition: all 300ms ease-in-out;
+}
+
+#menu-toggle:checked ~ .slideout-sidebar {
+    right: 0px;
+}
+  
+#menu-toggle:checked + .menu-icon {
+    right: 210px;
+}
+  
+#menu-toggle:checked ~ .content-container {
+    padding-right: 190px;
+}

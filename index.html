@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <!--Stylesheet-->
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/sidebar_style.css" />
     <link rel="stylesheet" href="css/list_style.css" />
     <link rel="stylesheet" href="css/select_style.css" />
     <link rel="stylesheet" href="css/preloader.css" />
@@ -20,6 +21,21 @@
         <div class="loader-section section-right"></div>
     </div>
     <!-- Preloader Animation Div -->
+
+    <!-- Sidebar Nav -->
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+    <div class="slideout-sidebar">
+        <ul>
+            <li class="do-all" onclick="displayDoList('do-all')">All Tasks</li>
+            <li class="do-now" onclick="displayDoList('do-now')">Do Now</li>
+            <li class="do-soon" onclick="displayDoList('do-soon')">Do Soon</li>
+            <li class="do-whenever" onclick="displayDoList('do-whenever')">Do Whenever</li>
+        </ul>
+    </div>
+    <!-- Sidebar Nav -->
+
     <div id="main_wrapper">
         <div class="content_container">
             <div class="centre_content">
@@ -28,49 +44,13 @@
                 <div class="centre_content">
                     <div id="todo-list">
                         <ul id="list">
-                            <!--
-                            <li>This is a list item
-                                <input type="checkbox" id="checkbox1" name="checkbox1" value="" />
-                                <label for="checkbox1">
-                                    <span>
-                                        <-- Span to be used to create checkbox styling -></span>
-                                </label>
-                            </li>
-                            <li>This is a list item
-                                <input type="checkbox" id="checkbox2" name="checkbox2" value="" />
-                                <label for="checkbox2">
-                                    <span>
-                                        <-- Span to be used to create checkbox styling -></span>
-                                </label>
-                            </li>
-                            <li>This is a list item
-                                <input type="checkbox" id="checkbox3" name="checkbox3" value="" />
-                                <label for="checkbox3">
-                                    <span>
-                                        <-- Span to be used to create checkbox styling -></span>
-                                </label>
-                            </li>
-                            <li>This is a list item
-                                <input type="checkbox" id="checkbox4" name="checkbox4" value="" />
-                                <label for="checkbox4">
-                                    <span>
-                                        <-- Span to be used to create checkbox styling -></span>
-                                </label>
-                            </li>
-                            <li>This is a particularly long list item for no other reason but to test the centered div limitations and how it could possbily come against something this long in future testings. Ultimately, here's hoping it doesn't come to that
-                                    <input type="checkbox" id="checkbox5" name="checkbox5" value="" />
-                                    <label for="checkbox5">
-                                        <span><-- Span to be used to create checkbox styling -></span>
-                                    </label>
-                                </li>
-                                -->
                         </ul>
                     </div>
                 </div>
                 <form id="form">
                     <input id="inputNewDo" type="text" placeholder="Do something new">
-                    <div class="select">
-                        <select name="slct" id="slct">
+                    <div class="select do-now">
+                        <select name="slct" id="slct" onchange="changeSelectClass()">
                             <option value="do-now">Do Now</option>
                             <option value="do-soon">Do Soon</option>
                             <option value="do-whenever">Do Whenever</option>
@@ -90,7 +70,7 @@
             //document variables
             var body = document.body;
             var listSubmit = document.getElementById("addNewDo");
-            
+
             //add the class loaded to the body element for the preloader
             body.classList.add("loaded");
 
@@ -101,40 +81,40 @@
             list.addEventListener("click", boxChecked);
 
             //call displayDoList function
-            displayDoList();
+            displayDoList("do-all");
 
             //call function when the checkbox on a list item is ticked
             function boxChecked(event) {
                 const element = event.target;
                 if (element.type == "checkbox") {
-                    if(element.checked == true){
-                        console.log("This has been checked off the list");
+                    if (element.checked == true) {
+                        //console.log("This has been checked off the list");
                         element.parentNode.classList.add("color-concrete");
                         element.parentNode.classList.add("completed");
                         editByKey(element.parentNode.id, "completed", "true");
-                    }else{
-                        console.log("This has been un-checked off the list");
+                    } else {
+                        //console.log("This has been un-checked off the list");
                         element.parentNode.classList.remove("color-concrete");
                         element.parentNode.classList.remove("completed");
                         editByKey(element.parentNode.id, "completed", "false");
                     }
-                }else if(element.id == "edit"){
-                    console.log("edit button clicked, now to edit item");
+                } else if (element.id == "edit") {
+                    //console.log("edit button clicked, now to edit item");
                     var label = element.parentNode.querySelector("label");
                     var editInput = element.parentNode.querySelector("input[type=text]");
                     var containsClass = element.parentNode.classList.contains("editMode");
                     //var containsClass2 = element.parentNode.classList.contains("completed");
                     //var wasCompleted = false;
 
-                    console.log("element.parentNode: " + element.parentNode);
+                    //console.log("element.parentNode: " + element.parentNode);
 
-                    if(containsClass){
-                        console.log("Save edit now!");
+                    if (containsClass) {
+                        //console.log("Save edit now!");
                         //change label text to input element value
                         label.innerText = editInput.value;
                         editByKey(element.parentNode.id, "task", editInput.value);
-                    }else{
-                        console.log("Yup, it's editing time! Can now change task text.");
+                    } else {
+                        //console.log("Yup, it's editing time! Can now change task text.");
                         //change input element value to label text
                         editInput.value = label.innerText;
                     }
@@ -149,12 +129,22 @@
 
                     element.parentNode.classList.toggle("editMode");
 
-                }else if(element.id == "close"){
-                    console.log("close button clicked, now to delete item");
+                } else if (element.id == "close") {
+                    //console.log("close button clicked, now to delete item");
                     deleteByValue(element.parentNode.id);
                     element.parentNode.remove();
                 }
             }
+        }
+
+        function changeSelectClass() {
+            var selectElem = document.getElementById("slct");
+            var changeToClass = document.getElementById("slct").value;
+
+            selectElem.parentNode.classList.remove(lastSelClass);
+            selectElem.parentNode.classList.add(changeToClass);
+            lastSelClass = changeToClass;
+            //console.log("lastSelClass: " + lastSelClass);
         }
     </script>
 </body>
