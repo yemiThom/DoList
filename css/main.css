@@ -115,7 +115,7 @@ input[type="checkbox"] { display: none; }
 
 #todo-list{
     max-height: 21rem;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #todo-list input[type=text]{
