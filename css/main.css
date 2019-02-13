@@ -133,6 +133,7 @@ input[type="checkbox"] { display: none; }
 
 .taskLabel{
     margin-left: 0px;
+    max-width: 50%;
 }
 
 .addBtn{
