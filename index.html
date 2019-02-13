@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <form id="form">
-                    <input id="inputNewDo" type="text" placeholder="What do you need to do?">
+                    <input id="inputNewDo" type="text" placeholder="What I need to do?">
                     <div class="select do-now">
                         <select name="slct" id="slct" onchange="changeSelectClass()">
                             <option value="do-now">Do Now</option>
@@ -76,6 +76,14 @@
 
             //button click event listener to call function
             listSubmit.addEventListener("click", addNewToDo);
+            //enter button pressed event listener to call function
+            window.addEventListener("keyup", function(event){
+                console.log("eventlistener added");
+                if(event.keyCode == 13){ 
+                    console.log("enter key pressed");
+                    listSubmit.click();
+                }
+            });
 
             //list event listener
             list.addEventListener("click", boxChecked);
