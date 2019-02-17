@@ -27,12 +27,19 @@
     <label for="menu-toggle" class="menu-icon">&#9776;</label>
 
     <div class="slideout-sidebar">
+        <div id="register">
+            <input id="register_input" class="register_input" type="text" placeholder="Register a username" onkeyup="handle(event)"/>
+            <p id="username_output"></p>
+        </div>
         <ul>
             <li class="do-all" onclick="displayDoList('do-all')">All Tasks</li>
             <li class="do-now" onclick="displayDoList('do-now')">Do Now</li>
             <li class="do-soon" onclick="displayDoList('do-soon')">Do Soon</li>
             <li class="do-whenever" onclick="displayDoList('do-whenever')">Do Whenever</li>
         </ul>
+        <div id="signout" class="register_input_hidden">
+            <a href="#" onclick="removeUsername()">Sign Out</a>
+        </div>
     </div>
     <!-- Sidebar Nav -->
 
@@ -40,7 +47,7 @@
         <div class="content_container">
             <div class="centre_content">
                 <h1 class="color-midnite-blu">DoList</h1>
-                <p class="color-wet-asphalt">Welcome to your simplified to-do list.</p>
+                <p id="welcomeText" class="color-wet-asphalt">Welcome to your simplified to-do list.</p>
                 <div class="centre_content">
                     <div id="todo-list">
                         <ul id="list">
@@ -73,6 +80,9 @@
 
             //add the class loaded to the body element for the preloader
             body.classList.add("loaded");
+
+            //check username
+            checkUsername();
 
             //button click event listener to call function
             listSubmit.addEventListener("click", addNewToDo);
@@ -145,6 +155,12 @@
             }
         }
 
+        function handle(e){
+            if(e.keyCode === 13){
+                checkUsername();
+            }
+        }
+
         function changeSelectClass() {
             var selectElem = document.getElementById("slct");
             var changeToClass = document.getElementById("slct").value;
@@ -153,6 +169,31 @@
             selectElem.parentNode.classList.add(changeToClass);
             lastSelClass = changeToClass;
             //console.log("lastSelClass: " + lastSelClass);
+        }
+
+        function checkUsername(){
+            var registerInput = document.getElementById("register_input");
+            var signout = document.getElementById("signout");
+            var output = document.getElementById("username_output");
+            
+            if(localStorage.getItem("username") != null){
+                console.log("username exists");
+                //hide input element
+                registerInput.classList.remove("register_input");
+                registerInput.classList.add("register_input_hidden");
+                signout.classList.remove("register_input_hidden");
+                //show username in div
+                output.innerHTML = "Hi "+localStorage.getItem("username");
+            }else{
+                if(registerInput.value != ""){
+                    console.log("input filled and enter button pressed");
+                }
+            }
+        }
+
+        function removeUsername(){
+            localStorage.removeItem("username");
+            checkUsername();
         }
     </script>
 </body>

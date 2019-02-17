@@ -75,3 +75,25 @@
 #menu-toggle:checked ~ .content-container {
     padding-right: 190px;
 }
+
+.register_input_hidden{
+    display: none;
+}
+.register_input{
+    border-bottom: 1px dashed #fff;
+    background: #34495e;
+    color: #fff;
+}
+.register_input::placeholder{
+    color: rgba(244,244,244,0.7);
+}
+#username_output{
+    color: #fff;
+}
+#signout{
+    margin-top: 3rem;
+    color: #fff;
+}
+#signout a{
+    cursor: pointer;
+}
