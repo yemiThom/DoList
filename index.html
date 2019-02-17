@@ -176,14 +176,14 @@
             var signout = document.getElementById("signout");
             var output = document.getElementById("username_output");
             
-            if(localStorage.getItem("username") != null){
+            if(localStorage.getItem("dolist_username") != null){
                 console.log("username exists");
                 //hide input element
                 registerInput.classList.remove("register_input");
                 registerInput.classList.add("register_input_hidden");
                 signout.classList.remove("register_input_hidden");
                 //show username in div
-                output.innerHTML = "Hi "+localStorage.getItem("username");
+                output.innerHTML = "Hi "+localStorage.getItem("dolist_username");
             }else{
                 if(registerInput.value != ""){
                     console.log("input filled and enter button pressed");
@@ -192,7 +192,7 @@
         }
 
         function removeUsername(){
-            localStorage.removeItem("username");
+            localStorage.removeItem("dolist_username");
             checkUsername();
         }
     </script>
