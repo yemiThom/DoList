@@ -38,7 +38,7 @@
             <li class="do-whenever" onclick="displayDoList('do-whenever')">Do Whenever</li>
         </ul>
         <div id="signout" class="register_input_hidden">
-            <a href="#" onclick="removeUsername()">Sign Out</a>
+            <a href="index.html" onclick="removeUsername()">Sign Out</a>
         </div>
     </div>
     <!-- Sidebar Nav -->
@@ -77,6 +77,8 @@
             //document variables
             var body = document.body;
             var listSubmit = document.getElementById("addNewDo");
+            var listInput = document.getElementById("inputNewDo");
+            var regInput = document.getElementById("register_input");
 
             //add the class loaded to the body element for the preloader
             body.classList.add("loaded");
@@ -87,11 +89,19 @@
             //button click event listener to call function
             listSubmit.addEventListener("click", addNewToDo);
             //enter button pressed event listener to call function
-            window.addEventListener("keyup", function(event){
+            listInput.addEventListener("keyup", function(event){
                 console.log("eventlistener added");
-                if(event.keyCode == 13){ 
+                if(event.keyCode === 13){ 
                     console.log("enter key pressed");
                     listSubmit.click();
+                }
+            });
+
+            regInput.addEventListener("keyup", function(event){
+                console.log("eventlistener added");
+                if(event.keyCode === 13){ 
+                    console.log("enter key pressed");
+                    checkUsername();
                 }
             });
 
@@ -155,12 +165,6 @@
             }
         }
 
-        function handle(e){
-            if(e.keyCode === 13){
-                checkUsername();
-            }
-        }
-
         function changeSelectClass() {
             var selectElem = document.getElementById("slct");
             var changeToClass = document.getElementById("slct").value;
@@ -185,15 +189,21 @@
                 //show username in div
                 output.innerHTML = "Hi "+localStorage.getItem("dolist_username");
             }else{
+                console.log("username not in storage");
                 if(registerInput.value != ""){
                     console.log("input filled and enter button pressed");
+                    localStorage.setItem("dolist_username", registerInput.value);
+                    console.log("input value stored");
+                    checkUsername();
+                    console.log("call function again");
+                }else{
+                    console.log("input blank, do nothing");
                 }
             }
         }
 
         function removeUsername(){
             localStorage.removeItem("dolist_username");
-            checkUsername();
         }
     </script>
 </body>
