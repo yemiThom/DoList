@@ -6,6 +6,7 @@ var listID = 0;
 var selector = document.getElementById("slct");
 var taskItemsArray = [];
 var lastSelClass = "do-now";
+var username = localStorage.getItem("dolist_username");
 
 //check listID against localStorage
 function getListID(){
@@ -36,6 +37,7 @@ function addNewToDo(arg1) {
             id: listID,
             task: todoTxt,
             urgency: selValue,
+            user: username,
             completed: "false"
         }
         //console.log("taskItemObj: " + JSON.stringify(taskItemObj));
@@ -86,7 +88,7 @@ function displayDoList(arg1){
             //go through items array with for loop
             for(i = 0; i < tempItemsArray.length; i++){
                 
-                if(tempItemsArray[i].urgency == arg1){
+                if(tempItemsArray[i].urgency == arg1 && tempItemsArray[i].user == username){
                     //make a newItem variable to hold html markup for each task item
                     //check if newItem has true or false completed value
                     if(tempItemsArray[i].completed == "false"){
@@ -113,7 +115,7 @@ function displayDoList(arg1){
             //go through items array with for loop
             for(i = 0; i < tempItemsArray.length; i++){
                 
-                if(tempItemsArray[i].urgency == arg1){
+                if(tempItemsArray[i].urgency == arg1 && tempItemsArray[i].user == username){
                     //make a newItem variable to hold html markup for each task item
                     //check if newItem has true or false completed value
                     if(tempItemsArray[i].completed == "false"){
@@ -140,7 +142,7 @@ function displayDoList(arg1){
             //go through items array with for loop
             for(i = 0; i < tempItemsArray.length; i++){
                 
-                if(tempItemsArray[i].urgency == arg1){
+                if(tempItemsArray[i].urgency == arg1 && tempItemsArray[i].user == username){
                     //make a newItem variable to hold html markup for each task item
                     //check if newItem has true or false completed value
                     if(tempItemsArray[i].completed == "false"){
@@ -166,25 +168,26 @@ function displayDoList(arg1){
         }else{
             //go through items array with for loop
             for(i = 0; i < tempItemsArray.length; i++){
-                
-                //make a newItem variable to hold html markup for each task item
-                //check if newItem has true or false completed value
-                if(tempItemsArray[i].completed == "false"){
-                    var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative'><label class='taskLabel'>" + tempItemsArray[i].task + "</label><input type='text'><input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='edit' id='edit'><a href='#' class='close' id='close'></li>";
-                }else if(tempItemsArray[i].completed == "true"){
-                    var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative color-concrete completed'><label class='taskLabel'>" + tempItemsArray[i].task + "</label><input type='text'><input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='edit' id='edit'><a href='#' class='close' id='close'></li>";
-                    
-                }
+                if(tempItemsArray[i].user == username){
+                    //make a newItem variable to hold html markup for each task item
+                    //check if newItem has true or false completed value
+                    if(tempItemsArray[i].completed == "false"){
+                        var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative'><label class='taskLabel'>" + tempItemsArray[i].task + "</label><input type='text'><input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='edit' id='edit'><a href='#' class='close' id='close'></li>";
+                    }else if(tempItemsArray[i].completed == "true"){
+                        var newItem = "<li id='" + tempItemsArray[i].id + "' class='hoverReveal pos-relative color-concrete completed'><label class='taskLabel'>" + tempItemsArray[i].task + "</label><input type='text'><input type='checkbox' id='checkbox" + tempItemsArray[i].id + "' name='checkbox" + tempItemsArray[i].id + "' value=''><label class='" + tempItemsArray[i].urgency + "' for='checkbox" + tempItemsArray[i].id + "'><span><!-- Span to be used to create checkbox styling --></span></label><a href='#' class='edit' id='edit'><a href='#' class='close' id='close'></li>";
+                        
+                    }
 
-                //insert newItem to list element
-                list.insertAdjacentHTML('beforeend', newItem);
-                //if the checkbox to the item id exists and set it's checked value
-                var elem = "checkbox"+tempItemsArray[i].id;
-                if(elem != null && tempItemsArray[i].completed == "true"){
-                    document.getElementById(elem).checked = tempItemsArray[i].completed;
+                    //insert newItem to list element
+                    list.insertAdjacentHTML('beforeend', newItem);
+                    //if the checkbox to the item id exists and set it's checked value
+                    var elem = "checkbox"+tempItemsArray[i].id;
+                    if(elem != null && tempItemsArray[i].completed == "true"){
+                        document.getElementById(elem).checked = tempItemsArray[i].completed;
+                    }
+                    //reset the form element
+                    form.reset();
                 }
-                //reset the form element
-                form.reset();
             }
         }
     }else{
